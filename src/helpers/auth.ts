@@ -1,7 +1,6 @@
-import Cookies from "js-cookie";
 
 export const isLogged = (): boolean => {
-  const token = Cookies.get("token");
+  const token = localStorage.getItem('token')
   return token ? true : false;
 };
 
@@ -9,3 +8,7 @@ export const doLogoout = (): void => {
   localStorage.removeItem('token')
 }
 
+export const doLogin = (token: string) => {
+ localStorage.setItem('token', token)
+ window.location.href = '/'
+}

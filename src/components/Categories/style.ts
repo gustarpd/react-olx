@@ -5,7 +5,7 @@ export const Main = styled.div`
   height: 90px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   margin: 0 auto;
   margin-top: 20px;
   background: #fff;
@@ -19,10 +19,10 @@ export const CategoriesArea = styled.div`
  border-left: #ccc;
  cursor: pointer;
  margin: 0 auto;
- /* background-color: red; */
  display: flex;
  align-items: center;
- justify-content: center;
  flex-direction: column;
+ justify-content: center;
  text-align: center;
+ line-height: 2px;
 `

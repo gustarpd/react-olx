@@ -1,35 +1,53 @@
 import { Link, useNavigate } from "react-router-dom";
-import { MainHead, HeadContent, Input } from "./style";
+import { MainHead, HeadContent, Input, AreaLink } from "./style";
 import { doLogoout, isLogged } from "../../helpers/auth";
 
 export const Header = () => {
-  const logged = localStorage.getItem('token');
-  const goHomeThenLoggout = useNavigate()
-  
+  const logged = localStorage.getItem("token");
+  const goHomeThenLoggout = useNavigate();
+
   const handleLoggout = () => {
-   doLogoout()
-   goHomeThenLoggout('/')
-  }
+    doLogoout();
+    goHomeThenLoggout("/");
+  };
 
   return (
     <MainHead>
       <HeadContent>
-        <div>
+        <div className="areaHead">
+          <div>
+            <Link to="/">
+              <h1>MARKETPLACE</h1>
+            </Link>
+          </div>
           {logged && (
-            <>
-              <Link to="/account">Minha conta</Link>
-              <button onClick={handleLoggout}>Sair</button>
-            </>
+            <div className="AreaProfile">
+              <Link to="/account">
+                <p>Minha conta</p>
+              </Link>
+              <p onClick={handleLoggout}>Sair</p>
+              <Link to="/newad">
+                <p className="adsButton">Anunciar</p>
+              </Link>
+            </div>
           )}
           {!logged && (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Cadastrar</Link>
-            </>
+            <div className="AreaProfile">
+              <Link to="/login">
+                <p>Login</p>
+              </Link>
+              <Link to="/signup">
+                <p onClick={handleLoggout}>Cadastrar</p>
+              </Link>
+              <Link to="/newad">
+                <p className="adsButton">Anunciar</p>
+              </Link>
+            </div>
           )}
-          <Link to={'post-ad'} className="ads">Anunciar</Link>
         </div>
-        <Input placeholder="Estou procurando por..." />
+        <div className="divInput">
+          <Input placeholder="Estou procurando por..." />
+        </div>
       </HeadContent>
     </MainHead>
   );

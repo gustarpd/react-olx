@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { GiBowlingPropulsion } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
+import { doLogin } from "../../helpers/auth";
+// import { doLogin } from "../../helpers/auth";
 import { api } from "../../services/api";
 import { Card, Form, Input, LoginMain } from "./style";
 
 type TypeSelect = {
-  _id: string; 
-  name: string 
-}
+  _id: string;
+  name: string;
+};
 
 export const SignUp = () => {
   const goHome = useNavigate();
@@ -16,25 +19,37 @@ export const SignUp = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
-  const [stateList, setStateList] = useState<Array<TypeSelect>>([])
-
-  // setEstado('MA')
+  const [stateList, setStateList] = useState<Array<TypeSelect>>([]);
+  const [selectValue, setSelectValue] = useState("");
 
   useEffect(() => {
-   const stateListreq = async () => {
-     const req = await api.get('/states')
-     const res = await req.data
-    //  const value = res.states
-     setStateList(res.states[1]._id)
-   }
+    const stateListreq = async () => {
+      const req = await api.get("/states");
+      const res = await req.data;
+      setStateList(res.states);
+    };
 
-   stateListreq()
-  }, [])
+    stateListreq();
+  }, []);
   const handleSignUp = async () => {
-   const request = await api.post('/user/signup', {name, email, password, state:stateList})
-   const res = request.data
-   console.log(res)
-   console.log(stateList)
+    setDisabled(true)
+    const request = await api.post("/user/signup", {
+      name,
+      email,
+      password,
+      state: selectValue,
+    });
+    const res = request.data;
+    setDisabled(false)
+    if(password !== confirmPassword) {
+      toast.error('As senhas não são a mesma', {
+        duration: 5000,
+        position: "top-center",
+      });
+    }
+    if(res.error === '') {
+      doLogin(res.token)
+    }
   };
 
   return (
@@ -49,13 +64,14 @@ export const SignUp = () => {
             onChange={(e) => setName(e.target.value)}
             disabled={false}
           ></Input>
-          <select>
-          <option defaultValue='Estado' >Estado</option>
-          {/* {stateList.map((item: any, key: any) => {
-            return (
-              <option key={key} value={item._id}>{item.name}</option>
-            )
-          })} */}
+          <select
+            value={selectValue}
+            onChange={(e) => setSelectValue(e.target.value)}
+          >
+            <option defaultValue="Estado">Estado</option>
+            {stateList.map((item: any) => {
+              return <option value={item._id}>{item.name}</option>;
+            })}
           </select>
           <Input
             placeholder="Email"
@@ -78,9 +94,7 @@ export const SignUp = () => {
             disabled={false}
           ></Input>
         </Form>
-        <button onClick={handleSignUp}>
-          Cadastrar
-        </button>
+        <button onClick={handleSignUp}>Cadastrar</button>
       </Card>
     </LoginMain>
   );

@@ -3,6 +3,8 @@ import { LoginMain, Card, Form, Input } from "./style";
 import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { toast, Toaster } from "react-hot-toast";
+import { doLogin } from "../../helpers/auth";
+
 
 interface typeResponse {
   data: {
@@ -15,7 +17,6 @@ export const Login = () => {
   const goHome = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remembrePassword, setRemembrePassword] = useState("");
   const [disabled, setDisabled] = useState(false);
   const [Error, setError] = useState("");
 
@@ -27,21 +28,16 @@ export const Login = () => {
       password,
     });
 
-    if (res.data.error == "") {
-      localStorage.setItem("token", res.data.token);
-      goHome("/");
+    if (res.data.error === "") {
+      doLogin(res.data.token);
     } else {
       toast.error(res.data.error, {
-        duration: 5000,
         position: "top-center",
-        style: {
-          backgroundColor: "red",
-          color: "#FFF",
-        },
+        duration: 5000,
       });
     }
 
-    setDisabled(false)
+    setDisabled(false);
   };
 
   return (
