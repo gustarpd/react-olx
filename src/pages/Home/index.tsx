@@ -10,7 +10,7 @@ export const Home = () => {
 
   useEffect(() => {
     const getAdsList = async () => {
-      const request = await api.get("/ad/list", { params: {limit: 9, sort: 'aesd' }});
+      const request = await api.get("/ad/list", { params: {limit: 12, sort: 'aesd' }});
       const res = await request.data;
       setListAds(res.ads);
     };

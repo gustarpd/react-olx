@@ -93,3 +93,8 @@ export const AdOther = styled.div`
     }
   }
 `;
+
+export const BreadCrumb = styled.div`
+margin: 0 0 0 150px;
+ padding: 20px 0 0 0;
+`

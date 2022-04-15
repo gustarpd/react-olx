@@ -1,13 +1,22 @@
-import { useEffect, useState } from "react";
+import { ReactChild, ReactFragment, ReactPortal, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
-import { AdFoto, AdInfosArea, AdMainArea, InfosUserAd, AdOther } from "./style";
+import { AdFoto, AdInfosArea, AdMainArea, InfosUserAd, AdOther, BreadCrumb } from "./style";
 import Carousel from "react-elastic-carousel";
+import { Pagination } from "../../components/Pagination";
+
+type OthersType = {
+  title: string;
+  image: string;
+  price: number;
+  id: string;
+};
 
 type typeInfos = {
   title: string;
   price: number;
+  category: {_id: string, name: string, slug: string}
   description: string;
   images: Array<string>;
   dateCreated: string;
@@ -18,38 +27,57 @@ type typeInfos = {
   others: Array<OthersType>;
 };
 
-type OthersType = {
-  title: string;
-  image: string;
-  price: number;
-  id: string;
-};
-
 export const AdPage = () => {
   const [infos, setInfos] = useState<typeInfos>();
+
   const params = useParams();
   const id = params.id;
   useEffect(() => {
     const getAdItem = async () => {
-      const req = await api.get("/ad/item", { params: { id, other: 'asc' , limit: 2 } });
-      const res = req.data;
+      const req = await api.get("/ad/item", {
+        params: { id, other: "asc" },
+      });
+      const res = await req.data;
+      console.log(res);
       setInfos(res);
     };
     getAdItem();
   }, []);
-   const formatDate = (date: any) => {
-       const months = ['janeiro', 'fervereiro', 'março', 'abril', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
-      const dates = new Date(date)
-      const DayDate = dates.getDay()
-      const MonthDate = dates.getMonth()
-      const YearDate = dates.getFullYear()
+  const hadleLeftClick = () => {};
 
-      return `0${DayDate} de ${months[MonthDate]} de ${YearDate}`
-   }
-  
+  const handleRightClick = () => {};
+
+  const formatDate = (date: any) => {
+    const months = [
+      "janeiro",
+      "fervereiro",
+      "março",
+      "abril",
+      "junho",
+      "julho",
+      "agosto",
+      "setembro",
+      "outubro",
+      "novembro",
+      "dezembro",
+    ];
+    const dates = new Date(date);
+    const DayDate = dates.getDay();
+    const MonthDate = dates.getMonth();
+    const YearDate = dates.getFullYear();
+
+    return `0${DayDate} de ${months[MonthDate]} de ${YearDate}`;
+  };
   return (
     <>
       <Header />
+      <BreadCrumb>
+        Voce esta aqui / 
+        <Link to='/'> Home  </Link>
+
+        / <Link to='/category'>{infos?.category.name} </Link>
+        / {infos?.title}
+      </BreadCrumb>
       <AdMainArea>
         <AdFoto>
           <Carousel
@@ -65,9 +93,10 @@ export const AdPage = () => {
         </AdFoto>
         <AdInfosArea>
           <h2>{infos?.title.toUpperCase()}</h2>
-          {/* <p>{formatDate(infos?.dateCreated)}</p> */}
           <p>
-            {infos?.description == 'undefined' ? 'sem descrição' : infos?.description}
+            {infos?.description == "undefined"
+              ? "sem descrição"
+              : infos?.description}
           </p>
           <p className="price">
             <b>{`R$ ${infos?.price}`}</b>
@@ -83,10 +112,10 @@ export const AdPage = () => {
         </AdInfosArea>
       </AdMainArea>
       <AdOther>
-        <div>
+      <div>
           <h4>Outras ofertas do vedendor</h4>
           <div className="parent">
-            {infos?.others.map((item) => {
+            {infos?.others.map((item: OthersType) => {
               return (
                 <div>
                   <a href={`/post-ad/${item.id}`}>
