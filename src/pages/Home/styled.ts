@@ -16,7 +16,7 @@ export const PageArea = styled.div`
   background-color: #fff;
   border-radius: 9px;
   margin: 30px 0;
-  a{
+  a {
     text-decoration: none;
     color: #000;
   }
@@ -27,27 +27,33 @@ export const PageArea = styled.div`
   .parent {
     display: grid;
     height: auto;
-    padding:  10px 20px;
+    padding: 10px 20px;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 19px;
-    grid-row-gap: 19px;
+    grid-column-gap: 6px;
+    grid-row-gap: 6px;
     div {
       line-height: 15px;
     }
-      img {
-        width: 100%;
-        border-radius: 15px;
-      }
+    img {
+      width: 70%;
+      border-radius: 15px;
     }
-    p{
-      word-break: normal;
-    }
+  }
+  p {
+    word-break: normal;
+  }
 
-    @media (min-width: 320px) and (max-width: 768px){
+  @media (min-width: 320px) and (max-width: 768px) {
     .parent {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(1, 1fr);
     }
   }
+`;
+
+export const Main = styled.div`
+  width: 200px;
+  height: 50px;
+  background-color: #fff;
 `;

@@ -61,7 +61,7 @@ export const AddAd = () => {
 
   return (
     <>
-      <Header />
+      <Header showInput={false} />
       <FormAddNewAd>
         <h1>Postar um anúncio</h1>
         <form>

@@ -1,14 +1,13 @@
-
 export const isLogged = (): boolean => {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem("token");
   return token ? true : false;
 };
 
 export const doLogoout = (): void => {
-  localStorage.removeItem('token')
-}
+  localStorage.removeItem("token");
+};
 
-export const doLogin = (token: string) => {
- localStorage.setItem('token', token)
- window.location.href = '/'
-}
+export const doLogin = (token: string): void => {
+  localStorage.setItem("token", token);
+  window.location.href = "/";
+};

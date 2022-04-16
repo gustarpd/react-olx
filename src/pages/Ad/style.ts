@@ -74,6 +74,11 @@ export const InfosUserAd = styled.div`
   padding: 10px;
   border: 1px solid #ccc;
   margin: 20px 0;
+
+  a {
+   text-decoration: none;
+   color: #fff;
+  }
 `;
 
 export const AdOther = styled.div`

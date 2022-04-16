@@ -55,7 +55,7 @@ export const AdPage = () => {
 
   return (
     <>
-      <Header />
+      <Header showInput={false} />
       <BreadCrumb>
         Voce esta aqui /<Link to="/"> Home </Link>/{" "}
         <Link to="/category">{infos?.category.name} </Link>/ {infos?.title}
@@ -98,7 +98,13 @@ export const AdPage = () => {
           {loading && <SkeletonLoading />}
           {!loading && (
             <InfosUserAd>
-              <button>fale com o vedendor</button>
+              <button>
+                <a
+                  href={`mailto:${infos?.userInfo.email}?subject=Interesse%em%comprar%seu%produto%cc=someone_else@example.com&body=This%20is%20the%20body`}
+                >
+                  fale com o vedendor
+                </a>
+              </button>
               <h5>{`Criado por: ${infos?.userInfo.name}`}</h5>
               <p>{`Email: ${infos?.userInfo.email}`}</p>
               <p>
