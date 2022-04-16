@@ -14,14 +14,18 @@ export const AdMainArea = styled.div`
   h2 {
     margin: 10px 0 20px 0;
   }
+
+  @media (min-width: 320px) and (max-width: 425px) {
+    flex-direction: column;
+    h4 {
+      margin: 20px;
+    }
+  }
 `;
 
 export const AdFoto = styled.div`
-  img {
-    width: 400px;
-  }
   .carrossel {
-    width: 600px;
+    width: 700px;
     .rec.rec-arrow {
       width: 40px;
       display: flex;
@@ -30,12 +34,23 @@ export const AdFoto = styled.div`
       height: 40px;
       border-radius: 19px;
     }
+    @media (min-width: 320px) and (max-width: 425px) {
+      img {
+        width: 300px;
+      }
+      .carrossel {
+        width: 200px;
+      }
+      .rec.rec-arrow {
+        display: none;
+      }
+    }
   }
 `;
 
 export const AdInfosArea = styled.div`
   margin: 49px 0;
-  width: 500px;
+  max-width: 500px;
   height: 500px;
 
   .price {
@@ -66,6 +81,9 @@ export const AdOther = styled.div`
   margin: 0 auto;
   height: auto;
   background-color: #fff;
+  @media (min-width: 320px) and (max-width: 425px) {
+    width: 90%;
+  }
 
   div {
     /* background-color: red; */
@@ -91,10 +109,34 @@ export const AdOther = styled.div`
         border-radius: 15px;
       }
     }
+    @media (min-width: 320px) and (max-width: 425px) {
+      .parent {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+      }
+      width: 90%;
+      margin: 0 auto;
+    }
   }
 `;
 
 export const BreadCrumb = styled.div`
-margin: 0 0 0 150px;
- padding: 20px 0 0 0;
+  margin: 0 0 0 150px;
+  padding: 20px 0 0 0;
+
+  @media (min-width: 320px) and (max-width:420px) {
+    margin: 0 0px 0 15px;
+  }
+`;
+export const SkeletonLoading = styled.div`
+  width: 400px;
+  height: 400px;
+  background-color: #F4F4F4;
+`
+export const SkeletonLoadingTexts = styled.div`
+  width: auto;
+  height: auto;
+  padding: 30px;
+  margin: 0 0 20px 0;
+  background-color: #F4F4F4;
 `

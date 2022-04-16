@@ -11,24 +11,28 @@ export const MainHead = styled.div`
 export const HeadContent = styled.div`
   max-width: 80%;
   display: flex;
+  padding: 10px;
   flex-direction: column;
+  justify-content: center;
   margin: 0 auto;
-
+  
   .areaHead {
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    @media (min-width: 320px) and (max-width: 604px) {
+     flex-direction: column;
+     margin:  0 0 30px 0;
+    }
     h1{
        color: #fff;
        cursor: pointer;
      }
-
      a{
        text-decoration: none;
      }
   }
-
   .AreaProfile {
     display: flex;
     justify-content: space-between;
@@ -36,28 +40,28 @@ export const HeadContent = styled.div`
     color: #fff;
     height: 20px;
     cursor: pointer;
-    width: 240px;
+    width: 290px;
   
     a{
       text-decoration: none;
       color: #fff;
     }
-
     .adsButton{
       text-align: center;
       background: orange;
       border-radius: 20px;
-      padding: 10px;
+      padding: 10px 20px;
     }
-  }
+}
 `;
 
 export const Input = styled.input`
   padding: 20px 15px;
-  width: 100%;
+  width: 97%;
   height: 30px;
   border-radius: 15px;
   outline: 0;
+  margin: 0 auto;
   border: 1px solid #ccc;
   font-size: 19px;
 `;

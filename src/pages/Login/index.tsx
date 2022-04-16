@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { LoginMain, Card, Form, Input } from "./style";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { toast, Toaster } from "react-hot-toast";
 import { doLogin } from "../../helpers/auth";
@@ -14,11 +13,9 @@ interface typeResponse {
 }
 
 export const Login = () => {
-  const goHome = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState(false);
-  const [Error, setError] = useState("");
 
   const handleSubmit = async () => {
     setDisabled(true);
@@ -60,7 +57,6 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
             required={true}
           />
-          <p>Lembrar a senha</p>
         </Form>
         <button disabled={disabled} onClick={handleSubmit}>
           Entrar

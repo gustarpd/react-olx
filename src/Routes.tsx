@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Account } from "./pages/Account";
 import { AdPage } from "./pages/Ad";
 import { AddAd } from "./pages/AddNewAd";
+import { CategoryPage } from "./pages/CategoryPage";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
 import { NotFound } from "./pages/NotFound";
@@ -24,6 +25,7 @@ export const Rotas = () => {
         }
       ></Route>
       <Route path="/post-ad/:id" element={<AdPage />}></Route>
+      <Route path="category/:id" element={<CategoryPage />}></Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

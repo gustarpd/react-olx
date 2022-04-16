@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Categories } from "../../components/Categories";
 import { Header } from "../../components/Header";
 import { api } from "../../services/api";
@@ -10,7 +10,7 @@ export const Home = () => {
 
   useEffect(() => {
     const getAdsList = async () => {
-      const request = await api.get("/ad/list", { params: {limit: 12, sort: 'aesd' }});
+      const request = await api.get("/ad/list", { params: {limit: 12, sort: 'desc' }});
       const res = await request.data;
       setListAds(res.ads);
     };
@@ -19,7 +19,7 @@ export const Home = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <MainPage>
         <Categories />
         <PageArea>
@@ -29,7 +29,7 @@ export const Home = () => {
               return (
                 <div>
                   <Link to={`/post-ad/${item.id}`}>
-                    <img src={item.image} alt="" />
+                    <img src={item.image} />
                     <p>{item.title}</p>
                     <b>{`R$ ${item.price}`}</b>
                   </Link>

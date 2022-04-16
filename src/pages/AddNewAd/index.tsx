@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Header } from "../../components/Header";
-import MaskedInput from "react-text-mask";
 import { createNumberMask } from "text-mask-addons";
-import fetchAddFile, { api } from "../../services/api";
+import { api } from "../../services/api";
 import { FormAddNewAd } from "./style";
 import { useNavigate } from "react-router-dom";
 
@@ -10,10 +9,6 @@ type categoriesType = {
   name: string;
   _id: string;
 };
-type ArrayCatType = {
-  categories: Array<categoriesType>;
-};
-
 export const AddAd = () => {
   const fileField: any = useRef();
   const token: any = localStorage.getItem("token");
@@ -68,7 +63,7 @@ export const AddAd = () => {
     <>
       <Header />
       <FormAddNewAd>
-        <h1>Postar um anuncio</h1>
+        <h1>Postar um anúncio</h1>
         <form>
           <label>Titulo</label>
           <input
@@ -77,13 +72,6 @@ export const AddAd = () => {
             required
           />
           <label>Preço</label>
-          {/* <MaskedInput
-            type={'number'}
-            mask={priceMask}
-            placeholder="R$ "
-            // value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          ></MaskedInput> */}
           <input type="number" onChange={e => setPrice(e.target.value)} />
           <label>Categoria</label>
           <select onChange={(e) => setCatSelect(e.target.value)}>
@@ -101,7 +89,7 @@ export const AddAd = () => {
           <label>Imagens (1 ou mais)</label>
           <input type="file" ref={fileField} />
         </form>
-        <button onClick={handleSubmitButton}>Adicionar anuncio</button>
+        <div><button onClick={handleSubmitButton}>Adicionar anúncio</button></div>
       </FormAddNewAd>
     </>
   );
