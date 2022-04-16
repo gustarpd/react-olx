@@ -25,7 +25,7 @@ export const Categories = () => {
       {listCats.map((item: any) => {
         return (
           <CategoriesArea>
-            <Link to={`/category/${item.slug}`}>
+            <Link to={`/category?cat=${item.slug}`}>
               <img src={item.img}></img>
               <p>{item.name}</p>
             </Link>

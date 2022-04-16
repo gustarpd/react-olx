@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
-import { MainHead, HeadContent, Input, AreaLink } from "./style";
-import { doLogoout, isLogged } from "../../helpers/auth";
+import { MainHead, HeadContent, Input } from "./style";
+import { doLogoout, } from "../../helpers/auth";
+
 
 export const Header = () => {
   const logged = localStorage.getItem("token");
@@ -45,8 +46,8 @@ export const Header = () => {
             </div>
           )}
         </div>
-        <div className="divInput">
-          <Input placeholder="Estou procurando por..." />
+        <div className="divInput" >
+          <Input placeholder="Estou procurando por..."/>
         </div>
       </HeadContent>
     </MainHead>

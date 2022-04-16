@@ -15,17 +15,24 @@ export const Rotas = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/account" element={<RequireAuth><Account /></RequireAuth>}></Route>
+      <Route
+        path="/account"
+        element={
+          <RequireAuth>
+            <Account />
+          </RequireAuth>
+        }
+      ></Route>
       <Route
         path="/newad"
         element={
-        <RequireAuth>
-          <AddAd />
-        </RequireAuth>
+          <RequireAuth>
+            <AddAd />
+          </RequireAuth>
         }
       ></Route>
       <Route path="/post-ad/:id" element={<AdPage />}></Route>
-      <Route path="category/:id" element={<CategoryPage />}></Route>
+      <Route path="/category/" element={<CategoryPage />}></Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

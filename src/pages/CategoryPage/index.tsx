@@ -1,51 +1,45 @@
-import { useEffect, useState } from "react"
-import { Header } from "../../components/Header"
-import { MainPage, PageArea } from "./style"
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { api } from "../../services/api"
+import { useEffect, useState } from "react";
+import { Header } from "../../components/Header";
+import { MainPage, PageArea } from "./style";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import { api } from "../../services/api";
 
 export const CategoryPage = () => {
-   const [seachParams, setSeachParams] = useSearchParams()
-   const [query, setQuery] = useState<any>(seachParams.get('q')) 
-   const [category, setCategory] = useState()
-   const [list, setList] = useState([])
-   const params = useParams()
-   const slug = params.slug
-   
- 
+  const params = useParams();
+  const [seachParams, setSeachParams] = useSearchParams();
+  const catQuery = seachParams.get("cat")
+  const [query, setQuery] = useState<any>(catQuery);
+  const [list, setList] = useState([]);
 
-  //  useEffect(() => {
-  //    const getCat = async () => {
-  //      const get = await api.get('/categories')
-  //      const res = get.data 
-  //      setList(res.categories)
-  //      console.log(res)
-  //    }
-  //    getCat()
-  //  }, [])
 
   useEffect(() => {
     const getAd = async () => {
-      const req = await api.get('/ad/list', {params: {sort: 'desc', limit: 16, cat:category}})
-      const res = await req.data
-      setList(res.ads)
-      console.log(res)
-    }
-    getAd()
-  }, [])
+      const req = await api.get("/ad/list", {
+        params: { sort: "desc", limit: 8 , cat:query },
+      });
+      const res = await req.data;
+      setList(res.ads);
+      console.log(res.ads);
+    };
+    getAd();
+  }, []);
 
-    return (
-      <><Header /><MainPage>
-        <h2>Anúncios mais recentes de {slug} cadastrado no sistema</h2>
+  return (
+    <>
+      <Header />
+      <MainPage>
+        <h2>Anúncios mais recentes de cadastrado no sistema</h2>
+        <form method="GET">
+          <input></input>
+        </form>
         <PageArea>
           <div className="parent">
             {list.map((i: any) => {
-              return (
-                <img src={i.image}></img>
-              )
+              return <img src={i.image}></img>;
             })}
           </div>
         </PageArea>
-        </MainPage></>
-    )
-}
+      </MainPage>
+    </>
+  );
+};
