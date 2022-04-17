@@ -10,6 +10,7 @@
  - [X] Anúnciar um produto com foto, preço, descrição
  # To-do
  - [] Editar anúncios
+ - [] Paginção
  # Tecnologias usadas
  - React
  - TypeScript
