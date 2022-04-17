@@ -13,6 +13,8 @@
  # Tecnologias usadas
  - React
  - TypeScript
+ - ReactHooks
+ - ViteJS
  - styled-components
  - axios
  - react-elastic-carousel
