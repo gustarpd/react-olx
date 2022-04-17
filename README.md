@@ -18,3 +18,4 @@
  - styled-components
  - axios
  - react-elastic-carousel
+ - react-hot-toast
