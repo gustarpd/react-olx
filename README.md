@@ -9,5 +9,10 @@
  - [x] Alterar dados cadastrado
  - [X] Anúnciar um produto com foto, preço, descrição
  # To-do
- - Editar anúncios
- 
+ - [] Editar anúncios
+ # Tecnologias usadas
+ - React
+ - TypeScript
+ - styled-components
+ - axios
+ - react-elastic-carousel
