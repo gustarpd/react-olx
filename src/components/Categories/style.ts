@@ -25,4 +25,9 @@ export const CategoriesArea = styled.div`
  justify-content: center;
  text-align: center;
  line-height: 2px;
+
+ a {
+    text-decoration: none;
+    color: #000;
+  }
 `

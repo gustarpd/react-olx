@@ -134,8 +134,8 @@ export const BreadCrumb = styled.div`
   }
 `;
 export const SkeletonLoading = styled.div`
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
   background-color: #F4F4F4;
 `
 export const SkeletonLoadingTexts = styled.div`
