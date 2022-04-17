@@ -4,14 +4,6 @@ import { api } from "../../services/api";
 import { toast, Toaster } from "react-hot-toast";
 import { doLogin } from "../../helpers/auth";
 
-
-interface typeResponse {
-  data: {
-    error: string;
-    token: string;
-  };
-}
-
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,18 +11,24 @@ export const Login = () => {
 
   const handleSubmit = async () => {
     setDisabled(true);
-    const token = true;
-    const res: typeResponse = await api.post("/user/signin", {
+    const req = await api.post("/user/signin", {
       email,
       password,
     });
 
-    if (res.data.error === "") {
-      doLogin(res.data.token);
+    const res = req.data;
+    console.log(res);
+
+    if (res.error === "") {
+      doLogin(res.token);
     } else {
-      toast.error(res.data.error, {
+      toast.error(res.error, {
         position: "top-center",
         duration: 5000,
+        style: {
+          backgroundColor: 'red',
+          color: '#fff',
+        }
       });
     }
 

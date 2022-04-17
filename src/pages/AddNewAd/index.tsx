@@ -15,16 +15,14 @@ export const AddAd = () => {
   const goLogin = useNavigate();
   const [title, setTitle] = useState("");
   const [categoriesSelect, setCatSelect] = useState("");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<Array<categoriesType>>([]);
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState('');
-  const [errors, setErrors] = useState("");
 
   useEffect(() => {
     const getCats = async () => {
       const req = await api.get("/categories");
       const res = await req.data;
-
       setCategories(res.categories);
       console.log(res);
     };
@@ -38,26 +36,20 @@ export const AddAd = () => {
     formData.append("cat", categoriesSelect);
     formData.append("desc", description);
     formData.append('token', token)
+    const json = await api.post('/ad/add', formData);
 
-    for (let i = 0; i < fileField.current.files.length; i++) {
+    for (let i = 0;i < fileField.current.files.length; i++) {
       formData.append("img", fileField.current.files[i]);
     }
 
-    const json = await api.post('/ad/add', formData);
     const res = await json.data 
     if(res.id) {
       goLogin(`/post-ad/${res.id}`)
     }
-    console.log(json);
+    
   };
 
-  const priceMask = createNumberMask({
-    prefix: "R$",
-    includesThousandSeparator: true,
-    thousandsSeparatorSymbol: ".",
-    allowDecimal: true,
-    decimalSymbol: ",",
-  });
+
 
   return (
     <>

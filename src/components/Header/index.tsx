@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { MainHead, HeadContent, Input, InputArea } from "./style";
 import { doLogoout, } from "../../helpers/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 type Props = {
@@ -19,23 +19,22 @@ export const Header = (props: Props) => {
   };
   
   const getValue = () => {
-    navigate(`/category?q=${inputValue}`)
-
-    // if(!inputValue) {
-    //   toast.error('Digite o que está procurando!', {
-    //     position: "top-right",
-    //     duration: 5000,
-    //     style: {
-    //       backgroundColor: 'red',
-    //       color: '#fff'
-    //     }
-    //   });
-    //   navigate('/')
-    // }
+    location.href= `/category?q=${inputValue}`
+    window.onload
+    if(inputValue === '') {
+      toast.error('Digite o que está procurando!', {
+        position: "top-center",
+        duration: 2000,
+        style: {
+          background: 'red',
+          color: '#fff'
+        }
+      });
+    }
   }
-
   return (
     <MainHead>
+      <Toaster />
     <HeadContent>
       <div className="areaHead">
         <div>

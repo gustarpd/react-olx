@@ -7,23 +7,25 @@ export const LoginMain = styled.div`
   height: 100vh;
 
   h1 {
-    margin-bottom: 100px;
+    margin-bottom: 60px;
   }
 `;
 export const Card = styled.div`
   width: 500px;
-  height: 600px;
+  height: 450px;
   text-align: center;
+  border-radius: 9px;
   background: #fff;
 
   button {
-    background: orange;
+    background: blue;
     padding: 10px;
     border-radius: 30px;
     color: #fff;
     border: 0;
     outline: 0;
     width: 80%;
+    cursor: pointer;
   }
 `;
 

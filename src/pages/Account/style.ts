@@ -77,4 +77,9 @@ export const DivForm = styled.div`
     padding: 10px;
     margin: 0 0 10px 0;
   }
+
+  button {
+      padding: 20px;
+      background-color: blue;
+  }
 `;

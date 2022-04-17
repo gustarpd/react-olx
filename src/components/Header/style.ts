@@ -44,8 +44,10 @@ export const HeadContent = styled.div`
     color: #fff;
     height: 20px;
     cursor: pointer;
-    width: 290px;
-
+    width: auto;
+    p {
+     padding: 0 20px 0 0;
+    }
     a {
       text-decoration: none;
       color: #fff;

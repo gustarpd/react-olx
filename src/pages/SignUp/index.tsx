@@ -1,9 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { GiBowlingPropulsion } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
-import { doLogin } from "../../helpers/auth";
-// import { doLogin } from "../../helpers/auth";
+import { doAccount, doLogin } from "../../helpers/auth";
 import { api } from "../../services/api";
 import { Card, Form, Input, LoginMain } from "./style";
 
@@ -27,6 +25,7 @@ export const SignUp = () => {
       const req = await api.get("/states");
       const res = await req.data;
       setStateList(res.states);
+      console.log(email)
     };
 
     stateListreq();
@@ -40,16 +39,18 @@ export const SignUp = () => {
       state: selectValue,
     });
     const res = request.data;
-    setDisabled(false)
-    if(password !== confirmPassword) {
-      toast.error('As senhas não são a mesma', {
+   
+    if(res.error === '') {
+      doAccount(res.token)
+      goHome('/')
+    }else {
+      toast.error(res.error, {
         duration: 5000,
         position: "top-center",
       });
     }
-    if(res.error === '') {
-      doLogin(res.token)
-    }
+
+    console.log(res.error)
   };
 
   return (
@@ -82,15 +83,9 @@ export const SignUp = () => {
 
           <Input
             placeholder="Senha"
+            type={'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            disabled={false}
-          ></Input>
-
-          <Input
-            placeholder="Comfirmar senha"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
             disabled={false}
           ></Input>
         </Form>

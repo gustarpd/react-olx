@@ -18,6 +18,7 @@ export const CategoryPage = () => {
   const [nameParam, setNameParam] = useState(nameP);
   const [list, setList] = useState([]);
 
+
   useEffect(() => {
     const getAd = async () => {
       const req = await api.get("/ad/list", {
@@ -25,10 +26,10 @@ export const CategoryPage = () => {
       });
       const res = await req.data;
       setList(res.ads);
-      console.log(res.ads);
     };
     getAd();
   }, []);
+
 
   return (
     <>
