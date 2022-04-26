@@ -2,7 +2,7 @@
 <p align="center">Aplicação desenvolvida em React para anunciar produtos<p>
 <img src="https://github.com/gustta03/marketplace/blob/master/.github/preview.png" />
  
-# Funcionalidades
+# Features
  - [x] Cadastrar usúarios
  - [X] Fazer login com usúario cadastrado
  - [x] Fazer logout
