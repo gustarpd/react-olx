@@ -30,7 +30,9 @@ Tecnologias que eu usei para desenvolver este projeto
 
 ### pré-requisitos
 
-- Antes de começar é necessário ter o <a href="https://git-scm.com/">git</a> e o <a href="https://nodejs.org/en/">node</a> instalado em sua máquina
+- Antes de começar é necessário ter instalado:
+- <a href="https://git-scm.com/">git</a>
+-  <a href="https://nodejs.org/en/">node</a>
 
 ****
 ### Rodando o Front-End 
@@ -39,7 +41,7 @@ Tecnologias que eu usei para desenvolver este projeto
 $ git clone https://github.com/gustta03/mercado.git
 
 # acesse a pasta do projeto
-$ cd mercadk
+$ cd mercado
 
 # instale as dependências
 $ npm install
