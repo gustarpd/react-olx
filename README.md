@@ -8,10 +8,11 @@
 <p>Aplicação desenvolvida em React para anunciar produtos inspirado no site Olx. O objetivo deste projeto é reproduzir as principais funcionalidades do site de vendas Olx tais como Anunciar e Visualizar anúncios de outros vendendores e entre outras funcionalidades.</p>
 
 ## Features
-- [x] Login
-- [x] Cadastrar ferramentas favoritas
-- [x] Deletar ferramentas
-- [x] Filtrar ferramentas por tags
+- [x] Criar uma conta
+- [x] Fazer login
+- [x] Buscar por produtos
+- [x] Anunciar um produto
+- [x] Entrar em contato com um amaciante por email
 
 ## Tecnologias
 
@@ -23,6 +24,7 @@ Tecnologias que eu usei para desenvolver este projeto
 - [React Modal](https://www.npmjs.com/package/react-modal)
 - [Styled Components](https://styled-components.com/)
 - [Axios](https://github.com/axios/axios)
+- [ViteJs](https://vitejs.dev/)
 
 ## Getting started
 
@@ -34,20 +36,14 @@ Tecnologias que eu usei para desenvolver este projeto
 ### Rodando o Front-End 
 ```bash
 # clone o repositório 
-$ git clone https://github.com/gustta03/femaqua.git
+$ git clone https://github.com/gustta03/mercado.git
 
 # acesse a pasta do projeto
-$ cd femaqua
+$ cd mercadk
 
 # instale as dependências
 $ npm install
 
 # execute o projeto 
 $ npm start
-```
-## Login
-```
-email: admin@admin.com
-password: admin123
-
 ```
