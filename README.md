@@ -12,7 +12,7 @@
 - [x] Fazer login
 - [x] Buscar por produtos
 - [x] Anunciar um produto
-- [x] Entrar em contato com um amaciante por email
+- [x] Entrar em contato com um anunciante por email
 - [x] Editar anúncio
 
 ## Tecnologias
