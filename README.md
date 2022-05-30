@@ -42,7 +42,7 @@ Tecnologias que eu usei para desenvolver este projeto
 $ git clone https://github.com/gustta03/mercado.git
 
 # acesse a pasta do projeto
-$ cd mercado
+$ cd marketplace 
 
 # instale as dependências
 $ npm install
