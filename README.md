@@ -1,5 +1,5 @@
 <h1 align="center">
-  Mercado
+  MarketplaceOlx
 </h1>
 <p align="center">Aplicação desenvolvida em React para anunciar produtos<p>
 <img src="https://github.com/gustta03/marketplace/blob/master/.github/preview.png" />
